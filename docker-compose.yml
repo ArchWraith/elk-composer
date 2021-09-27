@@ -1,0 +1,24 @@
+services:
+  elasticsearch:
+    container_name: elasticsearch
+    image: docker.elastic.co/elasticsearch/elasticsearch:$ELK_VERSION
+    ports:
+      - 9200:9200
+    networks:
+      - elk
+    environment:
+      - discovery.type=single-node
+    
+  kibana:
+    container_name: kibana
+    image: docker.elastic.co/kibana/kibana:$ELK_VERSION
+    ports:
+      - 5601:5601
+    networks:
+      - elk
+    depends_on:
+      - elasticsearch
+
+networks:
+  elk:
+    driver: bridge
