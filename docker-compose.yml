@@ -2,12 +2,20 @@ services:
   elasticsearch:
     container_name: elasticsearch
     image: docker.elastic.co/elasticsearch/elasticsearch:$ELK_VERSION
+    volumes:
+      - type: bind
+        source: ./elasticsearch/config/elasticsearch.yml
+        target: /usr/share/elasticsearch/config/elasticsearch.yml
+        read_only: true
     ports:
       - 9200:9200
     networks:
       - elk
     environment:
-      - discovery.type=single-node
+      discovery.type: single-node
+      ES_JAVA_OPTS: "-Xmx256m -Xms256m" 
+      ELASTIC_PASSWORD: changeme
+   
     
   kibana:
     container_name: kibana
@@ -18,6 +26,17 @@ services:
       - elk
     depends_on:
       - elasticsearch
+
+  logstash:
+    container_name: logstash
+    image: docker.elastic.co/logstash/logstash:$ELK_VERSION
+    ports:
+      - 5044:5044
+      - 5000:5000/tcp
+      - 5000:5000/udp
+      - 6900:9600
+    networks:
+      - elk
 
 networks:
   elk:
