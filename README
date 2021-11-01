@@ -1,0 +1,8 @@
+WINDOWS INSTRUCTIONS
+STEP 1: INSTALL DOCKER
+- if you have internet access, it is recommended that the latest version of the docker installer be downloaded from https://docs.docker.com/desktop/windows/install/
+- if you do not have internet access, please use the installer that is provided "Docker Desktop Installer.exe"
+- restart the system
+
+STEP 2: LOAD THE CONTAINERS
+- run the "get_images.bat" script to load the containers into your docker instance
