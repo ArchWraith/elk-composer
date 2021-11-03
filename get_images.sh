@@ -1,3 +1,3 @@
-docker load -i images/elasticsearch.tar.gz 
-docker load -i images/kibana.tar.gz 
-docker load -i images/logstash.tar.gz 
+docker import images/elasticsearch.tar.gz 
+docker import images/kibana.tar.gz 
+docker import images/logstash.tar.gz 

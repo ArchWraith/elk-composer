@@ -1,8 +1,8 @@
 services:
   elasticsearch:
     container_name: elasticsearch
-    #image: dso/elasticsearch:7.14
-    image: registry1.dso.mil/ironbank/elastic/elasticsearch/elasticsearch:7.14.0
+    #image: registry1.dso.mil/ironbank/elastic/elasticsearch/elasticsearch:7.14.0
+    image: 7e115794031f
     ports:
       - 9200:9200
       - 9300:9300
@@ -21,8 +21,8 @@ services:
     
   kibana:
     container_name: kibana
-    #image: dso/kibana:7.14
-    image: registry1.dso.mil/ironbank/elastic/kibana/kibana:7.14.0
+    #image: registry1.dso.mil/ironbank/elastic/kibana/kibana:7.14.0
+    image: 31dff7ec33fb
     ports:
       - 5601:5601
     networks:
@@ -38,8 +38,8 @@ services:
 
   logstash:
     container_name: logstash
-    image: registry1.dso.mil/ironbank/elastic/logstash/logstash:7.14.0
-    #image: dso/logstash:7.14
+    #image: registry1.dso.mil/ironbank/elastic/logstash/logstash:7.14.0
+    image: 
     ports:
       - 5044:5044
       - 5000:5000/tcp

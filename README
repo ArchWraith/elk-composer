@@ -1,18 +1,26 @@
 WINDOWS INSTRUCTIONS
-STEP 1: INSTALL DOCKER
-- if you have internet access, it is recommended that the latest version of the docker installer be downloaded from https://docs.docker.com/desktop/windows/install/
-- if you do not have internet access, please use the installer that is provided "Docker Desktop Installer.exe"
-- restart the system
+
+STEP 1: SETUP
+copy the "elk-composer" folder off of the dvd and continue these steps from there. Attempting to run these steps from the dvd may not work
+
+STEP 2: ENABLE WSL 2
+- wsl is only available on windows 10 & 11, older systems will need to use hypervisor
+- wsl is already installed on most windows 10 systems, but version 2 must be enabled
 - Docker does not work without wsl 2 so that needs to be installed and enabled on the host machine
 - wsl 2 can be enabled with this command "wsl --set-default-version 2"
 
-STEP 2: LOAD THE CONTAINERS
-- run the "get_images.bat" script to load the containers into your docker instance
+STEP 3: INSTALL DOCKER
+- if you have internet access, it is recommended that the latest version of the docker installer be downloaded from https://docs.docker.com/desktop/windows/install/
+- if you do not have internet access, use the installer that is provided. "Docker Desktop Installer.exe"
+- restart the system
 
-STEP 3: LOAD THE PIPELINE
-- this has not been figured out yet
+STEP 4: LOAD THE ELK STACK IMAGES
+- run the "get_images.bat" script to load the images into your docker instance
 
-STEP 4: DOCKER COMPOSE
-- run "compose.bat"
-- logs can be viewed with the command "docker-compose logs -f"
-  
+STEP 5: LOAD THE PIPELINE
+- coming soon
+
+STEP 6: DOCKER COMPOSE
+- run "compose.bat" from the terminal
+- closing the shell that pops up will not close the elk stack. "down.bat" should be run to close and remove the containers
+- to view logs, run "logs.bat"
