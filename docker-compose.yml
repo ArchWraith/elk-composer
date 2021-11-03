@@ -39,7 +39,7 @@ services:
   logstash:
     container_name: logstash
     #image: registry1.dso.mil/ironbank/elastic/logstash/logstash:7.14.0
-    image: 
+    image: 82232e20c308b159f333083338820dc58ffa855ef9a818a866ba589b62c56724
     ports:
       - 5044:5044
       - 5000:5000/tcp

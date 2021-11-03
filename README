@@ -1,7 +1,7 @@
 WINDOWS INSTRUCTIONS
 
 STEP 1: SETUP
-copy the "elk-composer" folder off of the dvd and continue these steps from there. Attempting to run these steps from the dvd may not work
+- copy the "elk-composer" folder off of the dvd and continue these steps from there. Attempting to run these steps from the dvd may not work
 
 STEP 2: ENABLE WSL 2
 - wsl is only available on windows 10 & 11, older systems will need to use hypervisor
@@ -15,7 +15,7 @@ STEP 3: INSTALL DOCKER
 - restart the system
 
 STEP 4: LOAD THE ELK STACK IMAGES
-- run the "get_images.bat" script to load the images into your docker instance
+- run the "load_images.bat" script to load the images into your docker instance
 
 STEP 5: LOAD THE PIPELINE
 - coming soon
@@ -24,3 +24,7 @@ STEP 6: DOCKER COMPOSE
 - run "compose.bat" from the terminal
 - closing the shell that pops up will not close the elk stack. "down.bat" should be run to close and remove the containers
 - to view logs, run "logs.bat"
+
+ADDITIONAL INFO
+- once all steps are completed, the kibana interface can be accessed through a browser at http://localhost:5601
+- if no files are loaded into the pipeline, the logstash container will close automatically
