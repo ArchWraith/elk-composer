@@ -1,8 +1,8 @@
 services:
   elasticsearch:
     container_name: elasticsearch
-    #image: registry1.dso.mil/ironbank/elastic/elasticsearch/elasticsearch:7.14.0
-    image: 7e115794031f
+    image: registry1.dso.mil/ironbank/elastic/elasticsearch/elasticsearch:7.14.1
+    #image: 3b2dc0c39a97
     ports:
       - 9200:9200
       - 9300:9300
@@ -21,8 +21,8 @@ services:
     
   kibana:
     container_name: kibana
-    #image: registry1.dso.mil/ironbank/elastic/kibana/kibana:7.14.0
-    image: 31dff7ec33fb
+    image: registry1.dso.mil/ironbank/elastic/kibana/kibana:7.14.0
+    #image: 31dff7ec33fb
     ports:
       - 5601:5601
     networks:
@@ -38,8 +38,8 @@ services:
 
   logstash:
     container_name: logstash
-    #image: registry1.dso.mil/ironbank/elastic/logstash/logstash:7.14.0
-    image: 82232e20c308b159f333083338820dc58ffa855ef9a818a866ba589b62c56724
+    image: registry1.dso.mil/ironbank/elastic/logstash/logstash:7.14.0
+    #image: 82232e20c308b159f333083338820dc58ffa855ef9a818a866ba589b62c56724
     ports:
       - 5044:5044
       - 5000:5000/tcp
@@ -55,11 +55,15 @@ services:
       - type: bind
         source: ./logstash/pipeline
         target: /usr/share/logstash/pipeline
+      - type: bind
+        source: ./logstash/pipelines.yml
+        target: /usr/share/logstash/config/pipelines.yml
     networks:
       - elk
     depends_on: 
       - elasticsearch
-    restart: on-failure:5
+    #command: tail -F anything
+    command: logstash
 
 networks:
   elk:
